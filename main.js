@@ -2375,7 +2375,7 @@ HomeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("@bounce", undefined);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](21);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵpureFunction1"](2, _c0, ctx.themeType === "light"));
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgClass"]], styles: [".avatar[_ngcontent-%COMP%] {\n  max-width: 300px;\n}\n@media screen and (max-width: 992px) {\n  .avatar[_ngcontent-%COMP%]   .avatar[_ngcontent-%COMP%] {\n    max-width: 200px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXC4uXFwuLlxcaG9tZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGdCQUFBO0FBQ0o7QUFBSTtFQUNJO0lBQ0ksZ0JBQUE7RUFFVjtBQUNGIiwiZmlsZSI6ImhvbWUuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYXZhdGFyIHtcclxuICAgIG1heC13aWR0aDogMzAwcHg7XHJcbiAgICBAbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA5OTJweCkge1xyXG4gICAgICAgIC5hdmF0YXIge1xyXG4gICAgICAgICAgICBtYXgtd2lkdGg6IDIwMHB4O1xyXG4gICAgICAgIH1cclxuICAgIH1cclxufVxyXG4iXX0= */"], data: { animation: [
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgClass"]], styles: [".avatar[_ngcontent-%COMP%] {\n  max-width: 300px;\n}\n@media screen and (max-width: 992px) {\n  .avatar[_ngcontent-%COMP%]   .avatar[_ngcontent-%COMP%] {\n    max-width: 200px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXC4uXFwuLlxcaG9tZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGdCQUFBO0FBQ0o7QUFBSTtFQUNJO0lBQ0ksZ0JBQUE7RUFFVjtBQUNGIiwiZmlsZSI6ImhvbWUuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYXZhdGFyIHtcclxuICAgIG1heC13aWR0aDogMzAwcHg7XHJcbiAgICBAbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA5OTJweCkge1xyXG4gICAgICAgIC5hdmF0YXIge1xyXG4gICAgICAgICAgICBtYXgtd2lkdGg6IDIwMHB4OyBcclxuICAgICAgICB9XHJcbiAgICB9XHJcbn1cclxuIl19 */"], data: { animation: [
             Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["trigger"])('bounce', [
                 Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["transition"])('* => *', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["useAnimation"])(ng_animate__WEBPACK_IMPORTED_MODULE_1__["bounceIn"], {
                     // Set the duration to 5seconds and delay to 2seconds
@@ -2504,17 +2504,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const routes = [
+    // {
+    //   path: '',
+    //   redirectTo: '',
+    //   pathMatch: 'full',
+    // },
     {
         path: '',
-        redirectTo: '/theme/view',
-        pathMatch: 'full',
-    },
-    {
-        path: 'theme',
         component: _theme_layout_layout_component__WEBPACK_IMPORTED_MODULE_1__["LayoutComponent"],
         children: [
             {
-                path: 'view',
+                path: '',
                 loadChildren: () => __webpack_require__.e(/*! import() | view-view-module */ "view-view-module").then(__webpack_require__.bind(null, /*! ./view/view.module */ "B4v+")).then((module) => module.ViewModule),
             },
         ],

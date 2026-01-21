@@ -1,0 +1,87 @@
+---
+import { type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../../i18n/utils';
+
+interface Props {
+	post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<BaseLayout title={post.data.title}>
+	<article class="post-content">
+		<header class="post-header">
+			{post.data.heroImage && <img src={post.data.heroImage} alt="" class="hero-image" />}
+			<time class="post-date" datetime={post.data.pubDate.toISOString()}>
+				{post.data.pubDate.toLocaleDateString(lang === 'uk' ? 'uk-UA' : 'ru-RU', {
+					year: 'numeric',
+					month: 'long',
+					day: 'numeric',
+				})}
+			</time>
+			<h1 class="post-title">{post.data.title}</h1>
+		</header>
+		
+		<div class="content">
+			<Content />
+		</div>
+
+		<footer class="post-footer">
+			<a href={translatePath('/blog/')} class="btn-back">&larr; {t('blog.back')}</a>
+		</footer>
+	</article>
+</BaseLayout>
+
+<style>
+	.post-content {
+		padding: 80px 40px;
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	.post-header {
+		margin-bottom: 40px;
+		text-align: center;
+	}
+    .hero-image {
+        width: 100%;
+        border-radius: 20px;
+        margin-bottom: 30px;
+    }
+	.post-date {
+		color: var(--primary-color);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		font-size: 14px;
+	}
+	.post-title {
+		font-size: 42px;
+		margin-top: 10px;
+	}
+	.content {
+		font-size: 18px;
+		line-height: 1.8;
+		color: var(--text-muted);
+	}
+	.post-footer {
+		margin-top: 60px;
+		padding-top: 30px;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+	}
+	.btn-back {
+		color: var(--text-white);
+		text-decoration: none;
+		font-weight: 700;
+		transition: 0.3s;
+	}
+	.btn-back:hover {
+		color: var(--primary-color);
+	}
+</style>

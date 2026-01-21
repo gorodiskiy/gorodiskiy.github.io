@@ -1,11 +1,18 @@
 ---
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+
 const today = new Date();
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+
 const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.replace(/\/$/, ""); // remove trailing slash for comparison
+// Normalize pathname to handle root correctly with and without trailing slash
+const currentPath = pathname.replace(/\/$/, "") || "/";
 ---
 <aside class="sidebar">
     <div class="sidebar-header">
-        <a href="/" class="logo">
+        <a href={translatePath('/')} class="logo">
             <span class="logo-icon">G</span>
             <span class="logo-text">GORODISKIY</span>
         </a>
@@ -13,22 +20,17 @@ const currentPath = pathname.replace(/\/$/, ""); // remove trailing slash for co
     
     <nav class="sidebar-nav">
         <ul>
-            <li><a href="/" class={currentPath === "" ? "active" : ""}><i class="icon-home"></i> Home</a></li>
-            <!--<li><a href="#about"><i class="icon-user"></i> About</a></li>-->
-            <!--<li><a href="#services"><i class="icon-briefcase"></i> Services</a></li>-->
-            <!--<li><a href="#experience"><i class="icon-graduation"></i> Experience</a></li>-->
-            <!--<li><a href="#works"><i class="icon-layers"></i> Works</a></li>-->
-            <!--<li><a href="#pricing"><i class="icon-note"></i> Pricing</a></li>-->
-            <!--<li><a href="#testimonials"><i class="icon-bubbles"></i> Testimonials</a></li>-->
-            <li><a href="/blog/" class={currentPath.startsWith("/blog") ? "active" : ""}><i class="icon-pencil"></i> Blog</a></li>
-            <!--<li><a href="#contact"><i class="icon-bubbles"></i> Contact</a></li>-->
+            <li><a href={translatePath('/')} class={(currentPath === "/" || currentPath === "/ru") ? "active" : ""}><i class="icon-home"></i> {t('nav.home')}</a></li>
+            <li><a href={translatePath('/blog/')} class={currentPath.includes("/blog") ? "active" : ""}><i class="icon-pencil"></i> {t('nav.blog')}</a></li>
         </ul>
     </nav>
 
     <div class="sidebar-footer">
-        <!--<div class="language-switcher">-->
-        <!--    <span class="current-lang">UA <i class="icon-arrow-down"></i></span>-->
-        <!--</div>-->
+        <div class="language-switcher">
+            <a href={lang === 'uk' ? '/ru' + (pathname === '/' ? '' : pathname) : pathname.replace(/^\/ru/, '') || '/'} class="lang-link">
+                {lang === 'uk' ? 'RU' : 'UA'} <i class="icon-refresh"></i>
+            </a>
+        </div>
         <p class="copyright">&copy; {today.getFullYear()}</p>
     </div>
 </aside>

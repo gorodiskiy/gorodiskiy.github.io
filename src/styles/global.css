@@ -248,7 +248,25 @@ body {
 
 .language-switcher {
     margin-bottom: 20px;
-    cursor: pointer;
+}
+
+.lang-link {
+    color: var(--text-white);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 5px 12px;
+    border-radius: 20px;
+}
+
+.lang-link:hover {
+    color: var(--yellow-color);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .copyright {
